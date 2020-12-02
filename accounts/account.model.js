@@ -7,6 +7,45 @@ const schema = new Schema({
     title: { type: String, required: true },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
+    
+    personalDetails: {
+        address:{type: String},
+        city:{type:String},
+        nationality:{type: String},
+        birthday:{type:Date},
+        starSign:{type:String},
+        profession:{type:String},
+        education:{type:String},
+        maritalStatus:{type:String}
+    },
+    favourites: {
+        colour: {type:String},
+        sport:{type:String},
+        book:{type:String},
+        author:{type:String},
+        meal:{type:String},
+        hobby:{type:String},
+        number:{type:String},
+        music:{type:String},
+        season:{type:String}
+    },
+    
+
+
+    topThree: {
+        dreamDestination: [{type:String}],
+        inventionsOfAllTime:[{type:String}],
+        childhoodGames:[{type:String}],
+        tvSeries:[{type:String}],
+        songs:[{type:String}],
+        movies:[{type:String}],
+        artists:[{type:String}],
+        celebrities:[{type:String}],
+        issues:[{type:String}],
+
+
+
+    },
     acceptTerms: Boolean,
     role: { type: String, required: true },
     verificationToken: String,

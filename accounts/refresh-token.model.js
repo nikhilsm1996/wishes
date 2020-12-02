@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
     account: { type: Schema.Types.ObjectId, ref: 'Account' },
+    busaccount: { type: Schema.Types.ObjectId, ref: 'BusinessAccount' },
     token: String,
     expires: Date,
     created: { type: Date, default: Date.now },
