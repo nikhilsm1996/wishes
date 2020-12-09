@@ -4,7 +4,7 @@ const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
 const busauthorize = require('_middleware/busauthorize');
 const Role = require('_helpers/role');
-const busaccountService = require('./business-account.service');
+const busaccountService = require('../services/business-account.service');
 
 // routes
 router.post('/authenticate', authenticateSchema, authenticate);
@@ -183,7 +183,7 @@ function createSchema(req, res, next) {
         email: Joi.string().email().required(),
         password: Joi.string().min(6).required(),
         confirmPassword: Joi.string().valid(Joi.ref('password')).required(),
-        role: Joi.string().valid(Role.Admin, Role.User).required()
+        role: Joi.string().valid(Role.Admin, Role.Business).required()
     });
     validateRequest(req, next, schema);
 }
@@ -209,7 +209,7 @@ function updateSchema(req, res, next) {
 
     // only admins can update role
     if (req.user.role === Role.Admin) {
-        schemaRules.role = Joi.string().valid(Role.Admin, Role.User).empty('');
+        schemaRules.role = Joi.string().valid(Role.Admin, Role.Business).empty('');
     }
 
     const schema = Joi.object(schemaRules).with('password', 'confirmPassword');
@@ -217,7 +217,7 @@ function updateSchema(req, res, next) {
 }
 
 function update(req, res, next) {
-    // users can update their own account and admins can update any account
+    //business users can update their own account and admins can update any account
     if (req.params.id !== req.user.id && req.user.role !== Role.Admin) {
         return res.status(401).json({ message: 'Unauthorized' });
     }

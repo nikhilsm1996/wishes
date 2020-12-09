@@ -4,12 +4,12 @@ const Joi = require('joi');
 const validateRequest = require('_middleware/validate-request');
 const authorize = require('_middleware/authorize')
 const Role = require('_helpers/role');
-const accountService = require('./account.service');
+const accountService = require('../services/account.service');
 
 // routes
-router.post('/authenticate', authenticateSchema, authenticate);
-router.post('/refresh-token', refreshToken);
-router.post('/revoke-token', authorize(), revokeTokenSchema, revokeToken);
+//router.post('/authenticate', authenticateSchema, authenticate);
+//router.post('/refresh-token', refreshToken);
+//router.post('/revoke-token', authorize(), revokeTokenSchema, revokeToken);
 router.post('/register', registerSchema, register);
 router.post('/verify-email', verifyEmailSchema, verifyEmail);
 router.post('/forgot-password', forgotPasswordSchema, forgotPassword);

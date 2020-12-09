@@ -1,7 +1,7 @@
 ﻿{
     "connectionString": "mongodb://localhost/node-mongo-signup-verification-api",
     "secret": "reubro12345678",
-    "emailFrom": "info@node-mongo-signup-verification-api.com",
+    "emailFrom": "matteo.braun@ethereal.email",
     "smtpOptions": {
         "host": "smtp.ethereal.email",
         "port": 587,
@@ -11,3 +11,4 @@
         }
     }
 }
+

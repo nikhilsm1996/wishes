@@ -6,10 +6,12 @@ const sendEmail = require('_helpers/send-email');
 const db = require('_helpers/db');
 const Role = require('_helpers/role');
 
+
+
 module.exports = {
-    authenticate,
-    refreshToken,
-    revokeToken,
+   // authenticate,
+   // refreshToken,
+    //revokeToken,
     register,
     verifyEmail,
     forgotPassword,
@@ -22,7 +24,7 @@ module.exports = {
     delete: _delete
 };
 
-async function authenticate({ email, password, ipAddress }) {
+ async function authenticate({ email, password, ipAddress }) {
     const account = await db.Account.findOne({ email });
 
     if (!account || !account.isVerified || !bcrypt.compareSync(password, account.passwordHash)) {
@@ -75,6 +77,7 @@ async function revokeToken({ token, ipAddress }) {
     refreshToken.revokedByIp = ipAddress;
     await refreshToken.save();
 }
+
 
 async function register(params, origin) {
     // validate

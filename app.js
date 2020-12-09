@@ -14,8 +14,10 @@ app.use(cookieParser());
 app.use(cors({ origin: (origin, callback) => callback(null, true), credentials: true }));
 
 // api routes
-app.use('/accounts', require('./accounts/accounts.controller'));
-app.use('/accounts/business', require('./accounts/business-account.controller'));
+app.use('/accounts/user', require('./api/accounts.controller'));
+app.use('/accounts/business', require('./api/business-account.controller'));
+app.use('/accounts', require('./api/login.controller'));
+
 
 
 // global error handler
