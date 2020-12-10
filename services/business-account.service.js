@@ -88,7 +88,7 @@ async function register(params, origin) {
 
     // first registered account is an admin
     const isFirstAccount = (await db.BusinessAccount.countDocuments({})) === 0;
-    busaccount.role = isFirstAccount ? Role.Admin : Role.User;
+    busaccount.role = isFirstAccount ? Role.Admin : Role.Business;
     busaccount.verificationToken = randomTokenString();
 
     // hash password
@@ -104,7 +104,7 @@ async function register(params, origin) {
 async function verifyEmail({ token }) {
     const busaccount = await db.BusinessAccount.findOne({ verificationToken: token });
 
-    if (!busaccount) throw 'Verification failed';
+    if (!busaccount) throw 'Verification failed in business service';
 
     busaccount.verified = Date.now();
     busaccount.verificationToken = undefined;

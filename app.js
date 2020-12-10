@@ -17,6 +17,9 @@ app.use(cors({ origin: (origin, callback) => callback(null, true), credentials: 
 app.use('/accounts/user', require('./api/accounts.controller'));
 app.use('/accounts/business', require('./api/business-account.controller'));
 app.use('/accounts', require('./api/login.controller'));
+app.use('/accounts', require('./api/verifyemail.controller'));
+app.use('/accounts', require('./api/forgotpassword.controller'));
+app.use('/accounts', require('./api/resetpassword.controller'));
 
 
 

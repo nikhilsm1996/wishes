@@ -24,7 +24,7 @@ async function authenticate({ email, password, ipAddress }) {
         
 
     if (busaccount && account !== null) {
-        throw 'Email or password is incorrect in Business';
+        throw 'Email or password is incorrect ';
         
     }  
     else if (account != null && account.role == 'User' ){
@@ -45,7 +45,7 @@ async function authenticate({ email, password, ipAddress }) {
         refreshToken: refreshToken.token
     };
 }
-else if ( busaccount != null && busaccount.role=='User'){
+else if ( busaccount != null && busaccount.role=='Business'){
     console.log("entering second else if")
  
      // authentication successful so generate jwt and refresh tokens
@@ -161,7 +161,7 @@ else if ( busaccount != null && busaccount.role=='User'){
         return jwt.sign({ sub: busaccount.id, id: busaccount.id }, config.secret, { expiresIn: '15m' });
     }
     //generate Refresh Token for Business user
-    function generateRefreshTokenB(busaccount, ipAddress) {
+    function generateRefreshTokenB(account, ipAddress) {
         // create a refresh token that expires in 7 days
         return new db.RefreshToken({
             account: account.id,
