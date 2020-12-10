@@ -1,10 +1,12 @@
+API for 
+Registration (Normal User and Business User)
+Login
+Verify email
+Forgot Password
+Reset Password
 
-<<<<<<< HEAD
-=======
-NodeJS + MongoDB - API with Email Sign Up, Verification, Authentication & Forgot Password
+Using Nodejs,MongoDB,Express
 
-For documentation and instructions see https://jasonwatmore.com/post/2020/05/13/node-mongo-api-with-email-sign-up-verification-authentication-forgot-password
-
-//  "user": 
-            "pass": "ckrulkydwgtfdbgj"
->>>>>>> c91e615 (Changes made to Login)
+#clone repo
+#npm i
+#setup mongodb locally
