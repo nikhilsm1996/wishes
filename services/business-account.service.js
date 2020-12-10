@@ -5,6 +5,7 @@ const crypto = require("crypto");
 const sendEmail = require('_helpers/send-email');
 const db = require('_helpers/db');
 const Role = require('_helpers/role');
+var otpGenerator = require('otp-generator')
 
 module.exports = {
     authenticate,
@@ -241,7 +242,8 @@ function generateRefreshToken(busaccount, ipAddress) {
 }
 
 function randomTokenString() {
-    return crypto.randomBytes(40).toString('hex');
+    return  otpGenerator.generate(6, { upperCase: false, specialChars: false,digits:true,alphabets:false });
+    //return crypto.randomBytes(40).toString('hex');
 }
 
 function basicDetails(busaccount) {
